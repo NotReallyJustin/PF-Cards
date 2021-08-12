@@ -1,0 +1,17 @@
+@keyframes flip
+{
+    from {transform: rotateY(0)}
+    to {transform: rotateY(-120deg)}
+}
+
+@keyframes flipPage
+{
+    from {transform: rotateY(0); border-right: 2px solid grey;}
+    to {transform: rotateY(-118deg); border-right: none;}
+}
+
+@keyframes unflip
+{
+    from {transform: rotateY(-120deg); border-right: 2px solid grey;}
+    to {transform: rotateY(0); border-right: none;}
+}

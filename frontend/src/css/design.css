@@ -1,0 +1,239 @@
+.notepad
+{
+    position: absolute;
+    top: 25%;
+    left: 12%;
+    transform: rotate(45deg);
+    width: 23%;
+    height: 40%;
+    box-shadow: 1px 1px 5px 3px #1f120f;
+}
+
+.padStick
+{
+    width: 100%;
+    height: 20%;
+    background-color: #302e29;
+}
+
+.paperAlone
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #ebebeb;
+    box-shadow: 1px 1px 5px 0px #4d4d4d;
+    overflow: hidden;
+}
+
+.pad
+{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.lines
+{
+    background: repeating-linear-gradient(white 0px, white 24px, #2895de 25px);
+    width: 100%;
+}
+
+.txt
+{
+    font: 23px comic sans ms;
+    outline: none;
+    line-height: 25px;
+}
+
+.highlight
+{
+    background-color: yellow;
+}
+
+.mintedBook
+{
+    backface-visibility: visible;
+    /*background-color: #7a5b17;*/
+    -webkit-user-drag: none;
+    width: 30%;
+    height: 70%;
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform-style: preserve-3d;
+}
+
+.cover, .paperBook
+{
+    position: absolute;
+    border-bottom-right-radius: 3%;
+    border-top-right-radius: 3%;
+}
+
+.cover
+{
+    background-color: #f7a800;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    transform-style: preserve-3d;
+    box-shadow: 0.5em 2px 3px 2px #1f120f;
+}
+
+/*.specialCover::after
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1%;
+    height: 100%;
+    border: 1px inset lightgray;
+    background: linear-gradient(90deg, rgba(185,185,185,1) 0%, rgba(38,38,38,1) 100%);
+}*/
+
+.paperBook
+{
+    background-color: #f1f1f1;
+    overflow-y: auto;
+    overflow-wrap: normal;
+    top: 1%;
+    left: 0%;
+    width: 95%;
+    height: 98%;
+    transform-style: flat;
+    box-shadow: -1em 2px 3px 2px #1f120f;
+    border-left: 2px outset #b3b3b3;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Make sure you import flip.css*/
+.flipForward
+{
+    animation-name: flip;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    transform-origin: left;
+}
+
+.flipForwardPage
+{
+    animation-name: flipPage;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    transform-origin: left;
+    box-shadow: -2em 5px 5px 3px #1f120f;
+}
+
+.flipBack
+{
+    animation-name: unflip;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    transform-origin: left;
+}
+
+.maGlass
+{
+    position: absolute;
+    width: 12%;
+    height: auto;
+    left: 35%;
+    bottom: 5%;
+    transform: rotate(10deg);
+    -webkit-user-drag: none;
+}
+
+.searchTitle
+{
+    font: 18pt trebuchet ms;
+}
+
+/*Make sure no copy*/
+.inputCluster input {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font: 14pt trebuchet ms;
+    border-radius: 6px;
+    color:rgb(161, 161, 161);
+    border: 1px solid rgb(153, 153, 153);
+    background: white;
+    transition: border .3s ease;
+
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.inputCluster input:focus
+{
+    outline: none;
+    border-color: goldenrod;
+}
+
+.inputCluster input::placeholder
+{
+    color: rgb(161, 161, 161);
+}
+
+.inputCluster {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.inputCluster > span
+{
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 25px;
+    color: rgb(161, 161, 161);
+    background: white;
+    border: 1px solid rgb(153, 153, 153);
+    transition: background .3s ease, border .3s ease, color .3s ease;
+}
+
+.inputCluster input, .inputCluster > span
+{
+    white-space: nowrap;
+    display: block;
+}
+
+.inputCluster input:not(:first-child):not(:last-child), .inputCluster > span:not(:first-child):not(:last-child)
+{
+    border-radius: 0;
+}
+
+.inputCluster input:first-child, .inputCluster > span:first-child
+{
+    border-radius: 6px 0 0 6px;
+}
+
+.inputCluster input:last-child, .inputCluster > span:last-child
+{
+    border-radius: 0 6px 6px 0;
+}
+
+.inputCluster input:not(:first-child), .inputCluster > span:not(:first-child)
+{
+    margin-left: -1px;
+}
+
+#search
+{
+    /*Get ideas pls*/
+}
