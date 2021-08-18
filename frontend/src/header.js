@@ -9,14 +9,15 @@ export default class Header extends Component
     {
         super(props);
         this.state = {
-            currentLS: 0,
-            links: ['', null, null, null, null]
+            active: ['active', '', '']
         }
     }
 
     handleClick(i)
     {
-        //window.open(`http://localhost:3000/${this.state.links[i]}`)
+        var arr = ['', '', ''];
+        arr[i] = 'active';
+        this.setState({active: arr});
     }
 
     render()
@@ -25,11 +26,9 @@ export default class Header extends Component
             <img src={logo} alt='logo' className="logo"/>
             <div className='title headerSpacing'>PF Cards</div>
             <div className='rightFade flexive'>
-                <LinkSet onClick={() => this.handleClick(0)} value="Search"/>
-                <LinkSet onClick={() => this.handleClick(1)} value="About"/>
-                <LinkSet onClick={() => this.handleClick(2)} value="Contact"/>
-                <LinkSet onClick={() => this.handleClick(3)} value="Briefs"/>
-                <LinkSet onClick={() => this.handleClick(4)} value="Extras" />
+                <LinkSet value="Search" redirect='/' onClick={() => this.handleClick(0)} act={this.state.active[0]} />
+                <LinkSet value="About" redirect='/about' onClick={() => this.handleClick(1)} act={this.state.active[1]} />
+                <LinkSet value="Briefs" redirect='/briefs' onClick={() => this.handleClick(2)} act={this.state.active[2]} />            
             </div>
         </header>);
     }

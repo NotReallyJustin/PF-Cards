@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 .notepad
 {
     position: absolute;
@@ -97,6 +99,7 @@
 {
     background-color: #f1f1f1;
     overflow-y: auto;
+    overflow-x: hidden;
     overflow-wrap: normal;
     top: 1%;
     left: 0%;
@@ -105,7 +108,7 @@
     transform-style: flat;
     box-shadow: -1em 2px 3px 2px #1f120f;
     border-left: 2px outset #b3b3b3;
-    cursor: pointer;
+    transform-style: preserve-3d;
 
     display: flex;
     flex-direction: column;
@@ -155,33 +158,69 @@
 .searchTitle
 {
     font: 18pt trebuchet ms;
+    padding-top: 5%;
 }
 
-/*Make sure no copy*/
-.inputCluster input {
-    display: block;
+.inputCluster 
+{
+    position: relative;
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 4%;
+}
+
+.inputCluster input
+{
     width: 100%;
-    padding: 8px 16px;
-    line-height: 25px;
-    font: 14pt trebuchet ms;
-    border-radius: 6px;
+    font: lighter 14pt 'Comfortaa';
+    border-radius: 2em;
     color:rgb(161, 161, 161);
     border: 1px solid rgb(153, 153, 153);
     background: white;
     transition: border .3s ease;
-
+    line-height: 25px;
+    padding: 6px 14px;
+    display: block;
     position: relative;
-    z-index: 1;
     flex: 1 1 auto;
     width: 1%;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 
-.inputCluster input:focus
+.inputCluster select, .inputCluster .selectPut
+{
+    width: 100%;
+    font: lighter 12pt 'Comfortaa';
+    color:rgb(161, 161, 161);
+    border: 1px solid rgb(153, 153, 153);
+    background: white;
+    transition: border .3s ease;
+    line-height: 25px;
+    padding: 6px 14px;
+    border-top-right-radius: 1.5em;
+    border-bottom-right-radius: 1.5em;
+    display: block;
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.inputTextFocus
 {
     outline: none;
-    border-color: goldenrod;
+    border: 2px solid #ffa260 !important;
+    color: black !important;
+}
+
+.inputSpanFocus
+{
+    color: white !important;
+    background-color: #ffa260 !important;
 }
 
 .inputCluster input::placeholder
@@ -189,43 +228,38 @@
     color: rgb(161, 161, 161);
 }
 
-.inputCluster {
-    position: relative;
-    display: flex;
-    width: 100%;
-}
-
 .inputCluster > span
 {
-    text-align: center;
-    padding: 8px 12px;
-    font-size: 14px;
-    line-height: 25px;
-    color: rgb(161, 161, 161);
     background: white;
     border: 1px solid rgb(153, 153, 153);
+    text-align: center;
+    padding: 8px 12px;
+    font: 14pt 'Comfortaa';
+    line-height: 25px;
+    color: rgb(161, 161, 161);
     transition: background .3s ease, border .3s ease, color .3s ease;
 }
 
 .inputCluster input, .inputCluster > span
 {
-    white-space: nowrap;
     display: block;
+    white-space: nowrap;
 }
 
 .inputCluster input:not(:first-child):not(:last-child), .inputCluster > span:not(:first-child):not(:last-child)
 {
-    border-radius: 0;
+    border-radius: 0px;
 }
 
+/*May not work w/ responsive design, idk*/
 .inputCluster input:first-child, .inputCluster > span:first-child
 {
-    border-radius: 6px 0 0 6px;
+    border-radius: 5px 1px 1px 5px;
 }
 
 .inputCluster input:last-child, .inputCluster > span:last-child
 {
-    border-radius: 0 6px 6px 0;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .inputCluster input:not(:first-child), .inputCluster > span:not(:first-child)
@@ -233,7 +267,79 @@
     margin-left: -1px;
 }
 
+.flip 
+{
+    display: inline-block;
+    width: 25%;
+    height:100%;
+    padding-top: 15px;
+    text-align: center;
+    background-color:rgb(160, 247, 0);
+}
+
+.flip::after 
+{
+    content: "";
+    position: static;
+    left: 0;
+    bottom: 0;
+    border-bottom: 2.8em solid #f1f1f1;
+    border-left: 2.4em solid transparent;
+    border-right: 2.5em solid transparent;
+    cursor: pointer;
+}
+
+.preDiv
+{
+    text-align: right;
+    width: 100%;
+    padding-right: 5%;
+    height: 10%;
+}
+
 #search
 {
-    /*Get ideas pls*/
+    padding: 0.6em;
+    border: 1px solid #ffa260;
+    color: #ffa260;
+    font: lighter 16pt 'Comfortaa';
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#search:hover
+{
+    /*box-shadow: inset 0 0 0 2em #fcbf3c;*/
+    background-color: #fc8600;
+    color: white;
+}
+
+#error
+{
+    width: 100%;
+    text-align: center;
+    font: 16pt 'Comfortaa';
+}
+
+.card
+{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.noCapOnAStackFrFr
+{
+    font: 14pt trebuchet ms;
+}
+
+.tag
+{
+    font: lighter 12pt trebuchet ms;
+}
+
+.actualCard
+{
+    font: lighter 12pt 'Comfortaa';
 }

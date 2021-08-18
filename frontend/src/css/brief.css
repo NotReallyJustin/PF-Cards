@@ -1,0 +1,152 @@
+/*Import hideList.css btw*/
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+#wrapper {
+    width          : 100vw;
+    height         : 100vh;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.briefClock {
+    background-color: rgb(238, 238, 238);
+    width           : 30%;
+    height          : 50%;
+    border-radius   : 3em;
+    box-shadow      : 0px 0px 10px 6px #1a0703;
+    overflow-x      : hidden;
+    overflow-y      : auto;
+}
+
+.btxt {
+    margin-top  : 10%;
+    margin-left : 7%;
+    margin-right: 7%;
+    font        : lighter 24pt trebuchet ms;
+}
+
+.selImg {
+    padding: 1px;
+    padding-right: 3px;
+    width: 30px;
+    height: 30px;
+}
+
+.btnSelect 
+{
+    padding-top: 5%;
+    text-align: center;
+}
+
+.btnSelect button
+{
+    padding: 0.6em;
+    border: 1px solid #ffa260;
+    color: #ffa260;
+    font: lighter 16pt 'Comfortaa';
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btnSelect button.btnEnabled:hover
+{
+    background-color: #ffa260;
+    color: white;
+}
+
+/*
+.btnSelect button.btnEnabled 
+{
+
+}
+*/
+
+#search:hover
+{
+    /*box-shadow: inset 0 0 0 2em #fcbf3c;*/
+    background-color: #fc8600;
+    color: white;
+}
+
+.briefSelect
+{
+    border: 1px solid #bbbbbb;
+}
+
+.briefOption
+{
+    background-color: white;
+    font: lighter 12pt 'Comfortaa';
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    cursor: pointer;
+}
+
+.briefOption:hover
+{
+    background-color: #e7e1d4;
+    transform: scale(1.1);
+}
+
+.invis
+{
+    display: none;
+}
+
+.aboutWrapper
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top: 1%;
+}
+
+.looseleaf
+{
+    padding-left: 5%;
+    padding-right: 2%;
+    width: 40%;
+    height: 80%;
+    overflow-y: auto;
+}
+
+.looseleaf::after
+{
+    content: ''; 
+    position: absolute; 
+    width: 0px; 
+    top: 0px; 
+    left: 8%; 
+    bottom: 0px; 
+    border-left: 1px solid #eed3d3;
+}
+
+.hole1, .hole2, .hole3
+{
+    position: absolute;
+    left: 2%;
+    width: 0.8em;
+    height: 0.8em;
+    background-color: #5f1608;
+    border-radius: 50%;
+}
+.hole1
+{
+    top: 10%;
+}
+
+.hole2
+{
+    top: 50%;
+}
+
+.hole3
+{
+    bottom: 10%;
+}

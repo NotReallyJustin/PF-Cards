@@ -9,6 +9,9 @@ export default class Book extends Component
     constructor(props)
     {
         super(props);
+        this.reRender = this.reRender.bind(this);
+        this.renderPage = this.renderPage.bind(this);
+        this.flipPage = this.flipPage.bind(this);
         this.state = {
             pageFlipped : [true, false, false, false],
             transitionHeaders : ['flipForward','','', ''],
@@ -18,11 +21,10 @@ export default class Book extends Component
     //Gets rid of all existing states, and rerenders them back in
     //Posts is an array of posts that we can use to later render, but it's strings for no
     reRender(posts) {
-        var idx = 0;
-        var zidx = posts.length + 2;
-
-        this.render = () => (
-            <div class='mintedBook'>
+        this.render = () => {
+            var idx = 0;
+            var zidx = posts.length + 2;
+            return (<div className='mintedBook'>
                 {this.renderPage(0, '', true, zidx--)}
                 {this.renderPage(++idx, '', false, zidx--)}
                 {posts.map((item) => (
@@ -30,18 +32,17 @@ export default class Book extends Component
                 ))}
                 {this.renderPage(++idx, '', true, zidx--)}
             </div>
-        );
-
-        this.render();
+            )
+        };
                 
         var arr = [true];
-        for (var i=0; i < idx; i++)
+        for (var i=0; i < posts.length + 2; i++)
         {
             arr.push(false);
         }
 
         var eArr = ['flipForward'];
-        for (var i=0; i < idx; i++)
+        for (var e=0; e < posts.length + 1; e++)
         {
             eArr.push('');
         }
@@ -50,12 +51,14 @@ export default class Book extends Component
             pageFlipped: arr,
             transitionHeaders: eArr
         });
+
+        this.flipPage(1, true);
     }
 
     //Make sure to render state when calling this function
     //zidx should reflect z-index from posts, in reverse order
     renderPage(i, content, isCover, zidx) {
-
+        //console.log(arguments)
         var renderCover = isCover || i == 0 || false;
         var clicko = () => this.flipPage(i, !this.state.pageFlipped[i]);
         if (i == 0 || renderCover) //Undefined will return false
@@ -65,22 +68,23 @@ export default class Book extends Component
         else if (i == 1)
         {
             return <SearchPage 
-                onClick={clicko} 
                 reRender={this.reRender} 
                 transitionClass={this.state.transitionHeaders[i]} 
                 isForwards={this.state.transitionHeaders[i] == 'flipForwardPage'}
-                zindex={this.state.transitionHeaders[i] == 'flipForwardPage' ? 0 : zidx}
+                zindex={this.state.transitionHeaders[i] == 'flipForwardPage' ? 0 : zidx} 
+                onClick={clicko} 
             />;
         }
 
         return (<FlippablePage 
             isCover={renderCover}
-            onClick={clicko} 
             content={this.state.transitionHeaders[i] == 'flipForwardPage' ? '' : content} 
             transitionClass={this.state.transitionHeaders[i]}  
             zindex={this.state.transitionHeaders[i] == 'flipForwardPage' ? 0 : zidx}
-            specialCover={i == 0 ? 'specialCover' : ''}
-        />);
+            specialCover={i == 0 ? 'specialCover' : ''} 
+            isForwards={this.state.transitionHeaders[i] == 'flipForwardPage'} 
+            onClick={clicko}
+        /> );
     }
 
     //Ref is a react component reference
@@ -97,8 +101,6 @@ export default class Book extends Component
         {
             toAdd = 'flipBack';
         }
-
-        console.log(toAdd);
 
         var forwardArr = this.state.pageFlipped.slice();
         forwardArr[i] = flipForward;

@@ -10,7 +10,7 @@ export default function NotePad()
             <Paper 
                 editable='true' 
                 content={
-                    <div className='pad'><b>Tammy '19</b><br /><br /> As 
+                    <div className='pad'><b>EditMe '19</b><br /><br /> As 
                     <span className='highlight'> social security </span>  
                     expenses increase alongside the massive COVID spending by Congress, more government branches will depend on quantitative easing - which if gone wrong, could shift economic power to the hands of China and 
                     <span className='highlight'> cause </span> an increase in 

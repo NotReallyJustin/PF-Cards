@@ -45,6 +45,7 @@
     font: 24pt 'Comfortaa';
     text-align: center;
     white-space: nowrap;
+    text-decoration-line: none;
 }
 
 .title
@@ -52,4 +53,10 @@
     font: 36pt trebuchet ms;
     color: white;
     padding-right: 5%;
+}
+
+.active
+{
+    color: gold;
+    text-decoration-line: underline;
 }
