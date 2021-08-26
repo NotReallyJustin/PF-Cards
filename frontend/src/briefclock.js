@@ -3,10 +3,29 @@ import './css/brief.css';
 import './css/design.css';
 import Champion from './images/vbi.svg';
 import Victory from './images/champions.svg';
+import DUS from './images/debateus.svg';
+import Grizzly from './images/bear.svg';
+import BR from './images/beyondresolved.svg';
+import debatetrack from './images/debatetrack.svg';
+import premier from './images/premier.svg';
+import silverbullet from './images/sbb.svg';
+import squirrel from './images/sk.svg';
+import cal from './images/westCoast.svg';
+import forensic from './images/forensicFiles.svg';
 import React, { Component } from 'react';
 
-const CHAMPIONS = {name: 'Champions', icon: Champion};
-const VBI = {name: 'Victory', icon: Victory};
+const CHAMPIONS = {name: 'Champion', icon: Champion, file: 'Champion Briefs'};
+const VBI = {name: 'Victory', icon: Victory, file: 'Victory Briefs'};
+const DEBATE_US = {name: 'DebateUS', icon: DUS, file: 'DebateUS'};
+const GRIZZLY = {name: 'Grizzly', icon: Grizzly, file: 'Grizzly Briefs'};
+const BEYOND_RESOLVED = {name: 'Beyond Resolved', icon: BR, file: 'Beyond Resolved'};
+const DEBATE_TRACK = {name: 'DebateTrack', icon: debatetrack, file: 'Debate Track'};
+const PREMIER = {name: 'Premier Briefs', icon: premier, file: 'Premier Debate'};
+const SBB = {name: 'Silver Bullet', icon: silverbullet, file: 'Silver Bullet Briefs'};
+const SQ = {name: 'Squirrel Killer', icon: squirrel, file: 'Squirrel Killer'};
+const WESTCOAST = {name: 'West Coast', icon: cal, file: 'West Coast Briefs'};
+const FORENSICFILES = {name: 'Forensic Files', icon: forensic, file: 'Forensic Files'};
+
 export default class BriefClock extends Component
 {
     constructor(props)
@@ -20,15 +39,13 @@ export default class BriefClock extends Component
         this.downloadBrief = this.downloadBrief.bind(this);
         this.has = {
             '09/21': [CHAMPIONS, VBI],
-            '05/21': [CHAMPIONS, VBI],
-            '04/21': [CHAMPIONS],
-            '03/21': [],
-            '02/21': [],
-            '01/21': [],
-            '12/20': [],
-            '11/20': [],
-            '10/20': [],
-            '9/20': [],
+            '05/21': [],
+            '04/21': [CHAMPIONS, VBI],
+            '03/21': [CHAMPIONS, VBI, DEBATE_US, SBB, SQ],
+            '02/21': [CHAMPIONS, DEBATE_US, VBI, SBB, SQ],
+            '01/21': [CHAMPIONS, VBI, DEBATE_US, SBB, PREMIER, SQ],
+            '11/20': [CHAMPIONS, VBI, SBB, DEBATE_US, WESTCOAST, FORENSICFILES],
+            '9/20': [CHAMPIONS, VBI, SBB, PREMIER, GRIZZLY, DEBATE_US, BEYOND_RESOLVED],
         }
 
         this.dateRef = React.createRef();
@@ -42,6 +59,7 @@ export default class BriefClock extends Component
             briefInvis: true,
             briefNav: '0px',
             briefWidth: '0px',
+            briefHeight: '0px',
             btnActive: false,
             trackFocus: [false, false]
         }
@@ -72,8 +90,13 @@ export default class BriefClock extends Component
             this.setState({
                 briefInvis: false,
                 briefNav: `${bounds.left - wrap.left}px`,
-                briefWidth: `${bounds.width}px`
+                briefWidth: `${bounds.width}px`,
+                briefHeight: `${wrap.height - (bounds.top - wrap.top) - bounds.height}px`
             });
+
+            /*console.log(wrap.height);
+            console.log(bounds.top);
+            console.log(bounds.height);*/
         }
     }
 
@@ -108,9 +131,10 @@ export default class BriefClock extends Component
 
     updateBrief(name) {
         return () => {
-            if (this.has[this.state.date].filter(el => el.name == name).length > 0)
+            var filterEl = this.has[this.state.date].filter(el => el.name == name);
+            if (filterEl.length > 0)
             {
-                this.setState({brief: name});
+                this.setState({brief: filterEl[0].file});
     
                 if (name != '')
                 {
@@ -130,8 +154,19 @@ export default class BriefClock extends Component
     }
 
     downloadBrief() {
-        console.log(this.state.date + ' ' + this.state.brief)
-        console.log('yes');
+        var jibberish = `/API/brief?date=${this.state.date.replace(/\//gmi, '-').replace(' ', '')}&name=${this.state.brief.replace(/ /gmi, '+')}`;
+        fetch(jibberish)
+            .then((res) => {
+                if (!res.ok)
+                {
+                    console.clear();
+                    alert('The file was not found. Try again.');
+                }
+                else
+                {
+                    window.open(jibberish)
+                }
+            });
     }
 
     renderBrief() {
@@ -182,7 +217,7 @@ export default class BriefClock extends Component
                     </div>
                     <div 
                         className={'briefSelect ' + (this.state.briefInvis ? 'invis' : '')}
-                        style={{width: this.state.briefWidth, marginLeft: this.state.briefNav}}
+                        style={{width: this.state.briefWidth, marginLeft: this.state.briefNav, maxHeight: this.state.briefHeight, overflowY: 'auto'}}
                     >
                         {this.renderBrief()}
                     </div>
@@ -190,7 +225,7 @@ export default class BriefClock extends Component
                         <button 
                             className={this.state.btnActive ? 'btnEnabled' : ''}
                             onClick={this.downloadBrief} 
-                            disabled={!this.state.btnActive}
+                            disabled={!this.state.btnActive} 
                         >
                             Download
                         </button>

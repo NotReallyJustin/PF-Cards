@@ -7,6 +7,8 @@
     display        : flex;
     align-items    : center;
     justify-content: center;
+        overflow-x      : hidden;
+    overflow-y      : auto;
 }
 
 .briefClock {
@@ -73,6 +75,8 @@
 .briefSelect
 {
     border: 1px solid #bbbbbb;
+    position: absolute;
+    overflow-x: hidden;
 }
 
 .briefOption

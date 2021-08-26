@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9058ba05.chunk.css",
+    "main.js": "/static/js/main.1a561c1a.chunk.js",
+    "main.js.map": "/static/js/main.1a561c1a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8233b8b5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8233b8b5.js.map",
+    "static/js/2.5e15b268.chunk.js": "/static/js/2.5e15b268.chunk.js",
+    "static/js/2.5e15b268.chunk.js.map": "/static/js/2.5e15b268.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.9058ba05.chunk.css.map": "/static/css/main.9058ba05.chunk.css.map",
+    "static/js/2.5e15b268.chunk.js.LICENSE.txt": "/static/js/2.5e15b268.chunk.js.LICENSE.txt",
+    "static/media/bear.e0c8f675.svg": "/static/media/bear.e0c8f675.svg",
+    "static/media/beyondresolved.b65de226.svg": "/static/media/beyondresolved.b65de226.svg",
+    "static/media/champions.c6bbc761.svg": "/static/media/champions.c6bbc761.svg",
+    "static/media/debatetrack.255cc60f.svg": "/static/media/debatetrack.255cc60f.svg",
+    "static/media/debateus.834bd9f3.svg": "/static/media/debateus.834bd9f3.svg",
+    "static/media/forensicFiles.de129c8e.svg": "/static/media/forensicFiles.de129c8e.svg",
+    "static/media/maglass.aa9b0da3.png": "/static/media/maglass.aa9b0da3.png",
+    "static/media/premier.981cdd24.svg": "/static/media/premier.981cdd24.svg",
+    "static/media/sbb.0e6253b7.svg": "/static/media/sbb.0e6253b7.svg",
+    "static/media/sk.88d455a8.svg": "/static/media/sk.88d455a8.svg",
+    "static/media/index.css": "/static/media/table.6457fed5.png",
+    "static/media/vbi.df7221ca.svg": "/static/media/vbi.df7221ca.svg",
+    "static/media/westCoast.5b632956.svg": "/static/media/westCoast.5b632956.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8233b8b5.js",
+    "static/js/2.5e15b268.chunk.js",
+    "static/css/main.9058ba05.chunk.css",
+    "static/js/main.1a561c1a.chunk.js"
+  ]
+}
