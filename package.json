@@ -4,7 +4,8 @@
   "description": "A site to fetch open sourced PF cards as well as paid briefs to make them accessible to anyone",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "cd frontend && npm install && npm run build"
   },
   "keywords": [
     "Debate"

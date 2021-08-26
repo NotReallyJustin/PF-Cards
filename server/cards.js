@@ -37,3 +37,5 @@ router.get('/', (req, res) => {
         //Return stuff o.o
     }
 });
+
+module.exports = router;
