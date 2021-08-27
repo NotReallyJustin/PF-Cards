@@ -24,7 +24,10 @@ export default class SearchPage extends Component
         this.updateTag = this.updateTag.bind(this);
         this.sendRequest = this.sendRequest.bind(this);
         this.validDates = [
+            {value: "", text: ""},
             {value: "09/21", text: "September '21"},
+            {value: "08/21", text: "August '21"},
+            {value: "07/21", text: "July '21"},
             {value: "05/21", text: "May '21"},
             {value: "04/21", text: "April '21"},
             {value: "03/21", text: "March '21"},
@@ -42,13 +45,22 @@ export default class SearchPage extends Component
     //this.props.reRender
     sendRequest() {
         //Error check + Defensive Programming
-        let req =  [{
-            caption: 'Seaweed destroys the world',
-            tag: 'Trolley \'14',
-            text: 'If seaweeds ***continue*** to overpopulate society, we **could** be faced with a *rising climate crisis* due to the nutrient extraction posed by them towards the Earth'
-        }];
-
-        this.props.reRender(req);
+        var link = `/API/cards?date=${this.dateHTML.current.value.replace(/\//gmi, '-').replace(' ', '')}&name=${this.nameHTML.current.value}&tag=${this.tagHTML.current.value}`;
+        fetch(link)
+            .then(res => {
+                if (!res.ok)
+                {
+                    console.error('smth went wrong in fetch');
+                }
+                else
+                {
+                    res.json()
+                        .then(json => {
+                            //console.log(json);
+                            this.props.reRender(json);
+                        });
+                }
+            });
     }
 
     updateName() {

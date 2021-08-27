@@ -70,7 +70,7 @@ export default class FlippablePage extends Component
             </div>
             <div className='tag'>
                 {this.purify(this.props.content.tag)}
-            </div>
+            </div> <br />
             <div className='actualCard'>
                 {this.purify(this.props.content.text)}
             </div>
