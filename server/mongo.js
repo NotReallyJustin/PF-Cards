@@ -1,14 +1,12 @@
 const { MongoClient } = require('mongodb');
-const pwd = '123454321';
-const url = `mongodb+srv://Admin:${pwd}@default.uwt1u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-const mango = new MongoClient(url);
-db = '';
+const url = `'mongodb+srv://Admin:123454321@default.uwt1u.mongodb.net/Default?retryWrites=true&w=majority'`;
+const mango = new MongoClient(url, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mango.db('Default');
 
 module.exports.initialize = () => {
     mango.connect()
         .then(() => {
             console.log('Mongo Connected!');
-            db = mango.db('Default');
         });
 }
 

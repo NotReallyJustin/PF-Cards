@@ -7,10 +7,10 @@ const cards = require('./cards.js');
 
 require('./mongo.js').initialize();
 
-app.use('*', (req, res, next) => {
+/*app.use('*', (req, res, next) => {
 	console.log(req.originalUrl);
 	next();
-});
+});*/
 
 app.use('/API/brief', brief);
 
