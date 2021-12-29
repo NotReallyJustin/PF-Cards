@@ -17,4 +17,4 @@ client.connect().then(() => {
 	//console.log(result.next());
 });
 
-client.close();
+client.close(); 
