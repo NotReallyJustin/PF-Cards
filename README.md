@@ -1,2 +1,2 @@
 # PF-Cards
-Justin sitting on a MERN stack!
+A card fetching site for ease of debate access
